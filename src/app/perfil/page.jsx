@@ -1,10 +1,11 @@
+'use client'
 import React from 'react'
 import './page.scss'
 
 const Page = () => {
   return (
     <div>
-      <h1>Perfil</h1>
+      <h1>Perfil resuelto</h1>
     </div>
   )
 }

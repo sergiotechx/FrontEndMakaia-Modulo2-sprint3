@@ -1,0 +1,57 @@
+
+.imgP img{
+    position: relative;
+    border-radius: 20px;
+}
+
+.back img{
+    position: absolute;
+    top: 55px;
+    left: 32px;
+    fill: #FFF
+}
+.option img{
+    position: absolute;
+    top: 65px;
+    left: 369px;
+    fill: #FFF
+}
+.coment{
+    padding:35px 16px 0 16px;
+    width: 396px;
+    height: 158px;
+    color: #2F2F2F;
+    text-align: justify;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Baloo Thambi 2;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.newComent{
+    display: flex;
+    align-items: center;
+    padding-top: 75px;
+    gap: 8px;
+    & img{
+        padding-left: 16px;
+    }
+    &__text{
+        display: flex;
+        align-items: center;
+        width: 346px;
+        height: 40px;
+        flex-shrink: 0;
+        background-color: #FFF;
+        padding-left: 10px;
+        padding-right: 25px;
+        border-radius: 20px;
+        input{
+            width: 336px;
+        height: 35px;
+        border: none;
+        }
+        
+    }
+}
