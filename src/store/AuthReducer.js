@@ -26,4 +26,4 @@ const authReducer = (state, action) => {
     }
 }
 export { initialAuthStore, types }
-export default authReducer
+export default authReducer 

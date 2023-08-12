@@ -7,7 +7,7 @@ import AuthValidation from '@/components/AuthValidation/AuthValidation';
 
 const balsamiq_Sans = Balsamiq_Sans({ 
   subsets: ['latin'],
-  weight:['400','700']
+  weight:['400','700'] 
  
 })
 

@@ -12,7 +12,7 @@ export async function login(email, password) {
             return userInfo.data[0]
         }
         else {
-            return ({})
+            return ({}) 
         }
     }
     catch (error) {

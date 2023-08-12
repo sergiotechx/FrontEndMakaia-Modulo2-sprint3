@@ -15,4 +15,4 @@ const userReducer =(state, action) =>{
     }
 }
 export {initialUserStore}
-export default  userReducer
+export default  userReducer 
