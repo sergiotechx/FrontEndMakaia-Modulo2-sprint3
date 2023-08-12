@@ -1,4 +1,6 @@
 
+import Footer from '../components/footer/Footer';
+import './layaout.scss'
 import { Balsamiq_Sans } from 'next/font/google'
 import StoreProvider from './../store/StoreProvider';
 import AuthValidation from '@/components/AuthValidation/AuthValidation';
@@ -10,6 +12,9 @@ const balsamiq_Sans = Balsamiq_Sans({
   weight:['400','700'] 
  
 })
+
+
+
 
 export const metadata = {
   title: 'Findy',
@@ -23,7 +28,10 @@ export default function RootLayout({ children }) {
        <StoreProvider>
        <AuthValidation/>
         {children}
+        <Footer/>
         </StoreProvider>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       </body>
     </html>
   )

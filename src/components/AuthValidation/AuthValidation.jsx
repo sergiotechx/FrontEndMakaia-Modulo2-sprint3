@@ -10,9 +10,9 @@ const AuthValidation = () => {
     
     useEffect(() => {
         console.log("auth")
-        if (!(Object.keys(_sessionStorage).length > 0)) {
-            router.push(`/login`)
-        }
+        // if (!(Object.keys(_sessionStorage).length > 0)) {
+        //     router.push(`/login`)
+        // }
     })
 
 }

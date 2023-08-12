@@ -20,6 +20,7 @@ export default function Page() {
         <p>el avatar es: {authStore?.avatar}</p>
         <button onClick={() => authDispatch({ type: types.authLogout })}> salir</button>
         <button onClick={() => router.push(`/login`)}> login</button>
+        <button onClick={()=>{router.push('/detalle')}}>Perfil</button>
       </>
     )
   }
