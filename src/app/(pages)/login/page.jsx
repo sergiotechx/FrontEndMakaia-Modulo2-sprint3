@@ -7,12 +7,13 @@ import Swal from 'sweetalert2'
 import { login } from '@/services/login';
 import { StoreContext } from '@/store/StoreProvider'
 import { types } from '@/store/AuthReducer'
-import { useSessionStorage } from '@mantine/hooks';
+
 import { Session_Name } from '@/constants/Constants';
+import useSessionStorage from '@/hooks/useSessionStorage';
 
 const Page = () => {
   const [authStore, authDispatch] = useContext(StoreContext)
-  const  {_sessionStorage, saveInfoSessionStorage, deleteInfoSessionStorage} = useSessionStorage(Session_Name)
+  const  {_sessionStorage, saveInfoSessionStorage, deleteInfoSessionStorage} = useSessionStorage()
   const form = useForm({
     initialValues: {
       email: '',
@@ -29,7 +30,6 @@ const Page = () => {
       if (Object.keys(userData).length > 0) {
         authDispatch({ type: types.authLogin ,payload:userData})
         saveInfoSessionStorage(Session_Name,userData)
-       
       }
       else {
         Swal.fire(
