@@ -13,7 +13,7 @@ const StoreProvider = ({ children }) => {
     return (
         <StoreContext.Provider value={[authStore, authDispatch,usersStore,usersDispatch,userStore, userDispatch]}>
             {children}
-        </StoreContext.Provider>
+        </StoreContext.Provider> 
     )
 }
 

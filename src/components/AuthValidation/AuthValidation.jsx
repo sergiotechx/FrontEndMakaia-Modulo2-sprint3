@@ -23,4 +23,4 @@ const AuthValidation = () => {
 
 }
 
-export default AuthValidation 
+export default AuthValidation  

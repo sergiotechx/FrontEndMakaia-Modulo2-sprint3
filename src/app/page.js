@@ -32,7 +32,7 @@ export default function Page() {
 
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     loadData()
   }, [])
 

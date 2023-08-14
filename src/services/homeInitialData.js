@@ -69,7 +69,7 @@ const getUser = async (id) => {
         return user
     }
     catch (error) {
-        throw error
+        throw error 
     }
 
 
