@@ -10,10 +10,12 @@ import { types } from '@/store/AuthReducer'
 
 import { Session_Name } from '@/constants/Constants';
 import useSessionStorage from '@/hooks/useSessionStorage';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
   const [authStore, authDispatch] = useContext(StoreContext)
-  const  {_sessionStorage, saveInfoSessionStorage, deleteInfoSessionStorage} = useSessionStorage()
+  const { _sessionStorage, saveInfoSessionStorage, getSessionStorage } = useSessionStorage()
+  const router = useRouter();
   const form = useForm({
     initialValues: {
       email: '',
@@ -24,12 +26,15 @@ const Page = () => {
       password: (value) => (value.length < 3 ? 'Debe tener almenos 3 digitos' : null),
     },
   });
+
   const doLogin = async (values) => {
     try {
       let userData = await login(values.email, values.password)
+
       if (Object.keys(userData).length > 0) {
-        authDispatch({ type: types.authLogin ,payload:userData})
-        saveInfoSessionStorage(Session_Name,userData)
+        saveInfoSessionStorage(Session_Name, userData)
+        authDispatch({ type: types.authLogin, payload: userData })
+        router.push(`/`)
       }
       else {
         Swal.fire(
@@ -47,7 +52,7 @@ const Page = () => {
       )
     }
   }
- 
+
 
   return (
     <>

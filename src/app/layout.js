@@ -7,10 +7,10 @@ import AuthValidation from '@/components/AuthValidation/AuthValidation';
 
 
 
-const balsamiq_Sans = Balsamiq_Sans({ 
+const balsamiq_Sans = Balsamiq_Sans({
   subsets: ['latin'],
-  weight:['400','700'] 
- 
+  weight: ['400', '700']
+
 })
 
 
@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={balsamiq_Sans.className}>
-       <StoreProvider>
-       <AuthValidation/>
-        {children}
-        <Footer/>
+        <StoreProvider>
+          <AuthValidation />
+          {children}
+          <Footer />
         </StoreProvider>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

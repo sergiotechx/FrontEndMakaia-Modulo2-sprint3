@@ -2,6 +2,7 @@ const types = {
     authLogin: 'auth - login',
     authLogout: 'auth - logout'
 }
+
 const initialAuthStore = {
     id: 0,
     username: undefined,
@@ -16,11 +17,11 @@ const authReducer = (state, action) => {
    
     switch (action.type) {
         case types.authLogin:
-            console.log("dispatch Login")
-            return action.payload
+            state = action.payload
+            return state
         case types.authLogout:
-            console.log("dispatch Logout")
-            return initialAuthStore
+            state = initialAuthStore
+            return state
         default:
             return initialAuthStore
     }
