@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import "./page.scss";
+import { StoreContext } from "@/store/StoreProvider";
 
 const Page = () => {
   const [perfilStore, perfilDispatch] = useContext(StoreContext);
