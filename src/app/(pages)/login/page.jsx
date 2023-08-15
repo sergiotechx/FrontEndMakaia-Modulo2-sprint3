@@ -32,8 +32,8 @@ const Page = () => {
       let userData = await login(values.email, values.password)
 
       if (Object.keys(userData).length > 0) {
-        saveInfoSessionStorage(Session_Name, userData)
         authDispatch({ type: types.authLogin, payload: userData })
+        saveInfoSessionStorage(Session_Name, userData)
         router.push(`/`)
       }
       else {
@@ -55,7 +55,7 @@ const Page = () => {
 
 
   return (
-    <>
+    <div className='Login_Container'>
       <h1>Login</h1>
       <div className='LoginForm'>
         <form onSubmit={form.onSubmit((values) => doLogin(values))}>
@@ -73,10 +73,11 @@ const Page = () => {
             withAsterisk
             {...form.getInputProps('password')}
           />
-          <Button type="submit">Submit</Button>
+          <Button radius="lg" variant="gradient" gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}  type="submit">Submit</Button>
+
         </form>
       </div>
-    </>
+    </div>
   )
 }
 
