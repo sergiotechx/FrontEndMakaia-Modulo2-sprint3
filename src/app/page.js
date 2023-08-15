@@ -7,7 +7,7 @@ import useSessionStorage from '@/hooks/useSessionStorage'
 import { Session_Name } from '@/constants/Constants'
 import { getHomeInitialData } from '@/services/homeInitialData'
 import { Carousel } from '@mantine/carousel';
-import { Avatar, Menu } from '@mantine/core';
+import { Avatar, Menu,Loader  } from '@mantine/core';
 import './page.scss'
 import PostPreview from '@/components/postPreview/postPreview'
 import Swal from 'sweetalert2'
@@ -93,27 +93,29 @@ export default function Page() {
           </Carousel.Slide>
 
         </div>
-        {followingUsers?.map != undefined &&
+        {followingUsers?.map != undefined? 
           followingUsers.map(user =>
             <Carousel.Slide>
               <div className='Avatar_Container'>
-                <Avatar radius="xl" color="blue" src={user.avatar} />
+                <Avatar radius="xs" color="blue" src={user.avatar} />
                 <p>{user.name}</p>
               </div >
             </Carousel.Slide>)
+            :
+            <Loader color="pink" size="xl" variant="bars" />
         }
       </Carousel>
       <div className='Home_Posts_Container'>
-        {posts?.length > 0 &&
-          posts.map((oneMessage) => <PostPreview message={oneMessage} />)
+        {posts?.length > 0? 
+          posts.map((oneMessage) => <PostPreview message={oneMessage} />):
+          <Loader color="pink" size="xs" variant="bars" />
         }
       </div>
 
 
 
 
-      <button onClick={() => authDispatch({ type: types.authLogout })}> salir</button>
-      <button onClick={() => router.push(`/login`)}> login</button>
+   
       <button onClick={() => { router.push('/detalle') }}>Perfil</button>
     </div>
   )
