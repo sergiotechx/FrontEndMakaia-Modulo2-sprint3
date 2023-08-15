@@ -1,7 +1,8 @@
 'use client'
 import { createContext, useReducer } from "react";
 import authReducer, { initialAuthStore } from "./AuthReducer";
-import comentReducer, { initialComentStore } from "./UserReducer";
+import comentReducer, {initialComentStore} from "./comentReducer";
+
 
 const StoreContext = createContext();
 
