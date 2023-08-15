@@ -74,7 +74,6 @@ const Page = () => {
             {...form.getInputProps('password')}
           />
           <Button type="submit">Submit</Button>
-
         </form>
       </div>
     </>

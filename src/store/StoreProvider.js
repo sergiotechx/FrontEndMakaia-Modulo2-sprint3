@@ -1,17 +1,15 @@
 'use client'
 import { createContext, useReducer } from "react";
 import authReducer, { initialAuthStore } from "./AuthReducer";
-import usersReducer, { initialUsersStore } from "./UsersReducer";
-import userReducer, { initialUserStore } from "./UserReducer";
+import comentReducer, { initialComentStore } from "./UserReducer";
 
 const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
     const [authStore, authDispatch] = useReducer(authReducer, initialAuthStore)
-    const [usersStore, usersDispatch] = useReducer(usersReducer, initialUsersStore)
-    const [userStore, userDispatch] = useReducer(userReducer, initialUserStore)
+    const [comentStore, comentDispath] = useReducer(comentReducer, initialComentStore)
     return (
-        <StoreContext.Provider value={[authStore, authDispatch,usersStore,usersDispatch,userStore, userDispatch]}>
+        <StoreContext.Provider value={[authStore, authDispatch,usersStore,usersDispatch,userStore, userDispatch, comentStore, comentDispath]}>
             {children}
         </StoreContext.Provider> 
     )
