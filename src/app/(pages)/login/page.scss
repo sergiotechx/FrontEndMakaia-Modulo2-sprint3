@@ -1,1 +1,23 @@
-   
+.Login_Container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    row-gap: 1rem;
+    .LoginForm{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: -5px 6px 13px -11px rgba(0, 0, 0, 0.75);
+        form{
+            padding: 0.5rem;
+            display: flex;
+            row-gap: 0.5rem;
+            flex-direction: column;
+            .mantine-Button-root{
+             width: 50%;   
+            }
+        }
+       
+    }
+}
