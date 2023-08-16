@@ -1,31 +1,32 @@
-const types = {
-    setComent : "set-coment",
-}
+export const types = {
+    setComent: "set-coment",
+};
 
-const  initialComentStore = {
-    user : {
-        id: 0,     
-        img:""
-    },
-    Comment: {
-        comentId:"",
-        name:"",
+const initialComentStore = {
+    user: {
         userId:0,
-        Text: "",
-        postId:"",
-        timestamp:""
-    }
-    
+        avatar:"",
 
-}
-const comentReducer =(state, action) =>{
-   switch(action.tpe){
-    case types.setComent:
-        state = action.payload;
-        return state
-       default:
-           return state
-   }
-}
-export {initialComentStore}
-export default  comentReducer 
+    },
+    comments: [],
+    post: {
+        postId:0,
+        userId:0
+    }
+};
+
+
+const comentReducer = (state = initialComentStore, action) => {
+    switch (action.type) {
+        case types.setComent:
+            return {
+                ...state,
+                comments: [...state.comments, action.payload],
+            };
+        default:
+            return state;
+    }
+};
+
+export { initialComentStore };
+export default comentReducer;
