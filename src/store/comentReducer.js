@@ -3,15 +3,11 @@ export const types = {
 };
 
 const initialComentStore = {
-    user: {
-        userId:0,
-        avatar:"",
-
-    },
-    comments: [],
-    post: {
-        postId:0,
-        userId:0
+        comments: [],
+            post: {
+                postId:0,
+                userId:0,
+                image:""
     }
 };
 
