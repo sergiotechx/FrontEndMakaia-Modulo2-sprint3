@@ -1,6 +1,4 @@
-const types = {
-    setComent : "set-coment",
-}
+
 
 const  initialComentStore = {
     user : {

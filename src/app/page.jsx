@@ -1,23 +1,25 @@
 'use client'
+import './page.scss'
 import { useContext, useEffect, useState } from 'react'
-import { StoreContext } from '@/store/StoreProvider'
-import { types } from '@/store/AuthReducer'
 import { useRouter } from 'next/navigation'
 import useSessionStorage from '@/hooks/useSessionStorage'
-import { Session_Name } from '@/constants/Constants'
+import { Session_Name, types } from '@/constants/Constants'
 import { getHomeInitialData } from '@/services/homeInitialData'
 import { Carousel } from '@mantine/carousel';
-import { Avatar, Menu,Loader  } from '@mantine/core';
-import './page.scss'
+import { Avatar, Menu, Loader } from '@mantine/core';
 import PostPreview from '@/components/postPreview/postPreview'
 import Swal from 'sweetalert2'
+import { getProfileAlldata } from '@/services/profileAlldata'
+import { StoreContext } from '@/store/StoreProvider'
+
 
 
 
 export default function Page() {
+  const { authStore, authDispatch, perfilDispatch } = useContext(StoreContext)
   const router = useRouter();
-  const [authStore, authDispatch] = useContext(StoreContext)
-  const { _sessionStorage, getSessionStorage,deleteInfoSessionStorage } = useSessionStorage()
+
+  const { getSessionStorage, deleteInfoSessionStorage } = useSessionStorage()
   const [followingUsers, setFollowingUsers] = useState([])
   const [posts, setPosts] = useState([])
 
@@ -45,28 +47,45 @@ export default function Page() {
         denyButton: 'order-3',
       }
     })
-    if(answer.isConfirmed){
+    if (answer.isConfirmed) {
       authDispatch({ type: types.authLogout })
       deleteInfoSessionStorage(Session_Name)
       router.push(`/login`)
-    } 
+    }
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     loadData()
   }, [])
 
 
+  const goProfile = async (userId) => {
+    try {
+      let { basicUserData } = await getProfileAlldata(userId)
+      if (Object.keys(basicUserData).length > 0) {
+        perfilDispatch({ type: types.perfilsetData, payload: basicUserData })
+        router.push(`/perfil`)
+      }
+    }
+    catch (error) {
+      Swal.fire(
+        'error!',
+        error.message,
+        'error'
+      )
+    }
+  }
+
   return (
     <div className='Home_Container'>
-      <div className='Home_Header1'>
-        <div className='Home_Header1_group1'>
+      <div className='Home_Header'>
+        <div className='Home_Header_group1'>
           <figure>
             <img src='/images/logo.png' />
           </figure>
 
         </div>
-        <div className='Home_Header1_group2'>
+        <div className='Home_Header_group2'>
           <figure id='header1_like'>
             <img src='/images/like.png' />
           </figure>
@@ -82,9 +101,11 @@ export default function Page() {
           </Menu>
         </div>
       </div>
-      <Carousel slideSize="15%" height={200} align="start" controlsOffset="xs" loop dragFree withControls={false}>
 
-        <div className='Avatar_Container'>
+      {followingUsers.length > 0 &&
+        <Carousel slideSize="15%" align="start" controlsOffset="xs" loop dragFree withControls={false}>
+
+
           <Carousel.Slide>
             <div className='Avatar_Container'>
               <Avatar radius="xl" color="blue" src='/images/yourstory.png' />
@@ -92,31 +113,32 @@ export default function Page() {
             </div >
           </Carousel.Slide>
 
-        </div>
-        {followingUsers?.map != undefined? 
-          followingUsers.map(user =>
-            <Carousel.Slide>
+
+
+          {followingUsers.map((user, index) =>
+            <Carousel.Slide key={index}>
+
               <div className='Avatar_Container'>
-                <Avatar radius="xs" color="blue" src={user.avatar} />
+                <Avatar radius="xs" color="blue" src={user.avatar} onClick={() => goProfile(user.id)} />
                 <p>{user.name}</p>
               </div >
             </Carousel.Slide>)
-            :
-            <Loader color="pink" size="xl" variant="bars" />
-        }
-      </Carousel>
+          }
+        </Carousel>
+      }
+
       <div className='Home_Posts_Container'>
-        {posts?.length > 0? 
-          posts.map((oneMessage) => <PostPreview message={oneMessage} />):
-          <Loader color="pink" size="xs" variant="bars" />
+
+        {posts.length > 0 ?
+          posts.map((oneMessage, index) => <PostPreview key={index} message={oneMessage} />) :
+
+          <div className='Home_Posts_Loading'>
+            <Loader color="pink" size="xl" variant="bars" />
+            <h1>Cargando datos</h1>
+          </div>
+
         }
       </div>
-
-
-
-
-   
-      <button onClick={() => { router.push('/detalle') }}>Perfil</button>
     </div>
   )
 }

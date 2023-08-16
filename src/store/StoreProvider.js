@@ -8,24 +8,18 @@ const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const [authStore, authDispatch] = useReducer(authReducer, initialAuthStore);
-  const [comentStore, comentDispath] = useReducer(
-    comentReducer,
-    initialComentStore
-  );
-  const [perfilStore, perfilDispatch] = useReducer(
-    userReducer,
-    initialUserStore
-  );
+  const [comentStore, comentDispath] = useReducer(comentReducer,initialComentStore);
+  const [perfilStore, perfilDispatch] = useReducer(userReducer,initialUserStore);
   return (
     <StoreContext.Provider
-      value={[
-        authStore,
+      value={
+        {authStore,
         authDispatch,
         comentStore,
         comentDispath,
         perfilStore,
-        perfilDispatch,
-      ]}
+        perfilDispatch}
+      }
     >
       {children}
     </StoreContext.Provider>

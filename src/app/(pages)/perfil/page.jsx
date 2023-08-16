@@ -4,7 +4,8 @@ import "./page.scss";
 import { StoreContext } from "@/store/StoreProvider";
 
 const Page = () => {
-  const [perfilStore, perfilDispatch] = useContext(StoreContext);
+  const {perfilStore, perfilDispatch} = useContext(StoreContext);
+  console.log(perfilStore)
   return (
     <div className="firstContainer">
       <figure className="firstContainer__imgPortada">

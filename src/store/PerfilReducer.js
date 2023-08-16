@@ -1,6 +1,4 @@
-const types = {
-  setData: "set - data",
-};
+import { types } from "@/constants/Constants";
 
 const initialUserStore = {
   id: 0,
@@ -12,9 +10,10 @@ const initialUserStore = {
   posts: [],
 };
 const userReducer = (state, action) => {
-  switch (action.types) {
-    case types.setData:
-      state: action.payload;
+
+  switch (action.type) {
+    case types.perfilsetData:
+      state = action.payload;
       return state;
     default:
       return state;

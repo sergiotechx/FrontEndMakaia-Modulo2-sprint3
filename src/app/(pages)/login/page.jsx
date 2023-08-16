@@ -6,14 +6,14 @@ import { useForm } from '@mantine/form';
 import Swal from 'sweetalert2'
 import { login } from '@/services/login';
 import { StoreContext } from '@/store/StoreProvider'
-import { types } from '@/store/AuthReducer'
 
-import { Session_Name } from '@/constants/Constants';
+
+import { Session_Name, types } from '@/constants/Constants';
 import useSessionStorage from '@/hooks/useSessionStorage';
 import { useRouter } from 'next/navigation';
 
 const Page = () => {
-  const [authStore, authDispatch] = useContext(StoreContext)
+  const {authStore, authDispatch} = useContext(StoreContext)
   const { _sessionStorage, saveInfoSessionStorage, getSessionStorage } = useSessionStorage()
   const router = useRouter();
   const form = useForm({
