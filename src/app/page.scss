@@ -138,7 +138,7 @@
 
             .PostPreview_Image {
                 align-self: center;
-
+                cursor:pointer;
                 & figure {
                     width: 380px;
                     height: 380px;
@@ -153,6 +153,7 @@
             }
 
             .PostPreview_Text {
+                cursor:pointer;
                 span {
                     font-weight: 400;
                     font-size: 12px;
