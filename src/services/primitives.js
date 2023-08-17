@@ -36,9 +36,12 @@ export const getUser = async (id) => {
 }
 export const getPostComments = async(postId)=>{
     try{
+     
         let complete_Url = Data_URL + `comments?postId=${postId}`
+     
         const tempPostComments = await axios.get(complete_Url)
-        if(tempPostComments.data.lenght >0){
+       
+        if(tempPostComments.data.length >0){
            return tempPostComments.data
         }
         else{return []}

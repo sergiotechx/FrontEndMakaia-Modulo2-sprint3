@@ -9,11 +9,11 @@ import { getPostComments } from '@/services/primitives';
 
 const PostPreview = ({ message }) => {
     const router = useRouter();
-    const {  perfilDispatch } = useContext(StoreContext)
-   
+    const { perfilDispatch, comentDispatch } = useContext(StoreContext)
+
     const goProfile = async () => {
         try {
-           
+
             let { basicUserData } = await getProfileAlldata(message.message.userId)
             if (Object.keys(basicUserData).length > 0) {
                 perfilDispatch({ type: types.perfilsetData, payload: basicUserData })
@@ -28,18 +28,34 @@ const PostPreview = ({ message }) => {
             )
         }
     }
-    const goComment = async () =>{
-        let comments = await  getPostComments(message.message.id)
-        console.log(message)
-        console.log(comments)
+    const goComment = async () => {
+        try {
+            let comments = await getPostComments(message.message.id)
+            let post = {
+                postId: message.message.id,
+                userId: message.message.userId,
+                image: message.message.image
+            }
+            let temData = { comments, post: post }
+            console.log('la tempisa',temData)
+            comentDispatch({ type: types.setComment, payload: temData })
+            //router.push(`/detalle`)
+        }
+        catch (error) {
+            Swal.fire(
+                'error!',
+                error.message,
+                'error'
+            )
+        }
     }
-   
+
 
 
     return (
 
         <div className='PostPreview_Container'>
-       
+
             <div className='PostPreview_Header' >
                 <Avatar radius="xl" color="blue" src={message.user.avatar} onClick={() => goProfile()} />
                 <p>{message.user.name}</p>
