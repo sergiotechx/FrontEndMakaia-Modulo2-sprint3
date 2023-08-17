@@ -2,7 +2,7 @@
 
 import React, { useContext, useState } from "react";
 import { StoreContext } from "@/store/StoreProvider";
-import { types } from "../../../store/comentReducer";
+import { types } from "../../../constants/Constants";
 import { sendComent } from "@/services/comments";
 import './page.scss'
 const julian = require('julian');
@@ -26,20 +26,19 @@ const Page = () => {
     const handleComentSubmit = async () => {
         const now = new Date();
         if (newComent.trim() !== "") {
-            await sendComent(newComent);
-            console.log(newComent);
-            
+            await sendComent(comentStore.post.postId,    authStore.id, newComent);
+            console.log(newComent); 
             console.log(comentStore);
             const newComentObject = {
                 id: comentStore.comments.length + 1,
-                postId: 6, 
-                userId: 2, 
+                postId: comentStore.post.postId, 
+                userId: authStore.id, 
                 text: newComent,
                 timestamp: Number(julian(now)),
             };
 
             comentDispatch({
-                type: types.setComent,
+                type: types.addComent,
                 payload: newComentObject,
             });
 

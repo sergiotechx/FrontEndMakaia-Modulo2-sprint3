@@ -4,9 +4,12 @@ const URL_API = 'http://localhost:3001'
 
 const endpoints = {
     coments : `${URL_API}/comments`
+
+
+     
 }
 
-export {Data_URL,Session_Name, endpoints}  
+export {Data_URL,Session_Name, endpoints, URL_API}  
  
 export const types = {
     authLogin: 'auth - login',

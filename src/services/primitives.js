@@ -1,4 +1,4 @@
-import { Data_URL } from "@/constants/Constants"
+import { Data_URL, URL_API } from "@/constants/Constants"
 import axios from 'axios';
 
 export const getPosts = async (id) => {
@@ -17,6 +17,26 @@ export const getPosts = async (id) => {
         throw error
     }
 }
+export const getPost = async (id) => {
+    try {
+
+        let complete_Url = URL_API + `/posts/${id}`
+        console.log('esta',complete_Url);
+        const tempPost = await axios.get(complete_Url)
+   
+
+        if (Object.keys(tempPost.data).length > 0) {
+            return  tempPost.data
+        }
+        else{
+            return {}
+        }
+    }
+    catch (error) {
+        throw error
+    }
+}
+
 export const getUser = async (id) => {
     try {
 
