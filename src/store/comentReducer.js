@@ -1,10 +1,13 @@
+export const types = {
+    setComent: "set-coment",
+};
 
 const initialComentStore = {
-    comments: [],
-    post: {
-        postId: 0,
-        userId: 0,
-        image: ""
+        comments: [],
+            post: {
+                postId:0,
+                userId:0,
+                image:""
     }
 };
 
