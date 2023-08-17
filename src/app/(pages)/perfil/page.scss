@@ -6,11 +6,41 @@
 
   &__imgPortada {
     width: 428px;
-    height: auto;
+    height: 280px;
 
     img {
       width: 100%;
+      height: 100%;
       border-radius: 30px 30px 0 0;
+      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .secondContainers {
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    z-index: 5;
+
+    .filter {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    .imgPost {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      img {
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 
@@ -31,6 +61,7 @@
     width: 100%;
     justify-content: space-around;
     position: relative;
+    text-align: center;
 
     .imgPerfil {
       position: absolute;
@@ -69,20 +100,5 @@
       justify-content: center;
       align-items: center;
     }
-  }
-}
-
-.secondContainers {
-  background-color: #fff;
-  position: absolute;
-  bottom: -30px;
-  width: 100%;
-  border-radius: 20px 20px 0 0;
-
-  .filter {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    padding: 10px;
   }
 }

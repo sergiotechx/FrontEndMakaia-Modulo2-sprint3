@@ -3,9 +3,10 @@
     display: flex;
     flex-direction: column;
     max-width: 428px;
+    height: 836px;
     row-gap: 1rem;
 
-    .Home_Header1 {
+    .Home_Header {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -53,11 +54,12 @@
 
     .mantine-Carousel-container {
         height: fit-content;
-
-        .Avatar_Container {
+  
+       .Avatar_Container {
             display: flex;
             flex-direction: column;
             align-items: center;
+           
 
             & p {
                 font-weight: 400;
@@ -66,7 +68,7 @@
             }
 
             .mantine-Avatar-root {
-
+                cursor: pointer;
                 .mantine-Avatar-image {
                     border-color: #FF758E;
                     border-style: solid;
@@ -79,15 +81,26 @@
         }
     }
 
-    .Home_Posts_Container {
 
+    .Home_Posts_Container {
+    
         display: flex;
         flex-direction: column;
         width: 100%;
-        margin-top: -10rem;
+
         row-gap: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
+        overflow-y: scroll;
+
+       .Home_Posts_Loading {
+            display: flex;
+            margin-top: 200px;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
 
         .PostPreview_Container {
             display: flex;
@@ -96,7 +109,10 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: -5px 6px 13px -11px rgba(0, 0, 0, 0.75);
-            padding:0.5rem;
+            padding: 0.5rem;
+
+
+
             .PostPreview_Header {
                 display: flex;
                 flex-direction: row;
@@ -107,6 +123,7 @@
                 .mantine-Avatar-root {
                     margin-left: 0.5rem;
                     margin-top: 0.5rem;
+                    cursor: pointer;
 
                     .mantine-Avatar-image {
                         border-color: #FF758E;
@@ -121,6 +138,7 @@
 
             .PostPreview_Image {
                 align-self: center;
+                cursor:pointer;
                 & figure {
                     width: 380px;
                     height: 380px;
@@ -133,8 +151,10 @@
                     }
                 }
             }
-            .PostPreview_Text{
-                span{
+
+            .PostPreview_Text {
+                cursor:pointer;
+                span {
                     font-weight: 400;
                     font-size: 12px;
                 }

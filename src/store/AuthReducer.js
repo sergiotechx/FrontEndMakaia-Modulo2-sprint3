@@ -1,7 +1,5 @@
-const types = {
-    authLogin: 'auth - login',
-    authLogout: 'auth - logout'
-}
+
+import { types } from "@/constants/Constants"
 
 const initialAuthStore = {
     id: 0,
@@ -26,5 +24,5 @@ const authReducer = (state, action) => {
             return initialAuthStore
     }
 }
-export { initialAuthStore, types }
+export { initialAuthStore }
 export default authReducer

@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import './footer.scss'
 
 
@@ -12,41 +13,48 @@ const Footer = () => {
         { name: "profile", icon: "person-outline", dis: "228px" },
     ]
 
-    const[active, setActive] = useState(0)
+    const [active, setActive] = useState(0)
 
     const [ovalPosition, setOvalPosition] = useState('1px');
-  return (
-    <div className="footer">
-        <ul className='ul'>
-        <span className='oval' style={{ transform: `translateX(${ovalPosition})` }}>
-            <span className='cornerL'>
-                <span className='cornerL__re'>
+    const currentPath = usePathname()
 
-                </span>
-              
-            </span>
-            <span className='cornerR'>
-            <span className='cornerR__rel'>
+    return (
+        <div className="footer">
+            {currentPath != '/login' ?
+                (
+                    <ul className='ul'>
+                        <span className='oval' style={{ transform: `translateX(${ovalPosition})` }}>
+                            <span className='cornerL'>
+                                <span className='cornerL__re'>
 
-</span>
-            </span>
-                </span>
-            {
-                Menus.map((menu,i)=>(
-                 <li key={i} className='li'>
-                    <a onClick={()=> { setActive(i); setOvalPosition(menu.dis); }}>
-                    <span className={`icon ${i === active && 'active'}`}>
-                        <ion-icon name={menu.icon}></ion-icon>
+                                </span>
+
+                            </span>
+                            <span className='cornerR'>
+                                <span className='cornerR__rel'>
+
+                                </span>
+                            </span>
                         </span>
-                        <span className={` ${active === i ? 'show' : 'ocult'}`}>{menu.name}</span>
-                    </a>
-                 </li>   
-                ))
+                        {
+                            Menus.map((menu, i) => (
+                                <li key={i} className='li'>
+                                    <a onClick={() => { setActive(i); setOvalPosition(menu.dis); }}>
+                                        <span className={`icon ${i === active && 'active'}`}>
+                                            <ion-icon name={menu.icon}></ion-icon>
+                                        </span>
+                                        <span className={` ${active === i ? 'show' : 'ocult'}`}>{menu.name}</span>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                )
+                :
+                null
             }
-        </ul>
-        
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Footer

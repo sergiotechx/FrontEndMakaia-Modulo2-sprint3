@@ -9,7 +9,7 @@ const Page = () => {
     const router = useRouter();
 
     const handleClik = () => {
-        router.push(`/login`)
+        router.push(`/perfil`)
     }
 
     const value = useContext(StoreContext)

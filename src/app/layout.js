@@ -1,6 +1,6 @@
 
 import Footer from '../components/footer/Footer';
-import './layaout.scss'
+import './layout.scss'
 import { Balsamiq_Sans } from 'next/font/google'
 import StoreProvider from './../store/StoreProvider';
 import AuthValidation from '@/components/AuthValidation/AuthValidation';
