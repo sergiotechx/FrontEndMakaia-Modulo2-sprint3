@@ -27,6 +27,9 @@ const PostPreview = ({ message }) => {
             )
         }
     }
+    const goComment = async () =>{
+         console.log(message)
+    }
 
     return (
 
@@ -37,11 +40,11 @@ const PostPreview = ({ message }) => {
                 <p>{message.user.name}</p>
             </div>
             <div className='PostPreview_Image' >
-                <figure>
+                <figure onClick={() => goComment()}>
                     <img src={message.message.image} />
                 </figure>
             </div>
-            <div className='PostPreview_Text' >
+            <div className='PostPreview_Text' onClick={() => goComment()}>
                 <span>
 
                     <strong>{message.user.name}</strong>

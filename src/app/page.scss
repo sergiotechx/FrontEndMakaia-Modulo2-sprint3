@@ -138,11 +138,11 @@
 
             .PostPreview_Image {
                 align-self: center;
-                cursor:pointer;
+                
                 & figure {
                     width: 380px;
                     height: 380px;
-
+                    cursor:pointer;
                     & img {
 
                         width: 380px;
