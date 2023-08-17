@@ -1,10 +1,16 @@
-const Data_URL = 'https://frontendmakaia-modulo2-sprint3-jsonserver.onrender.com/'
-const  Session_Name ='Findy'
-
-export {Data_URL,Session_Name}  
 export const types = {
     authLogin: 'auth - login',
     authLogout: 'auth - logout',
     perfilsetData: "set - data",
     setComment : "set-comment",
 }
+
+const Data_URL = 'https://frontendmakaia-modulo2-sprint3-jsonserver.onrender.com/'
+const URL_API = 'http://localhost:3001'
+const  Session_Name ='Findy'
+
+const endpoints = {
+    coments : `${URL_API}/comments`
+}
+
+export {Data_URL,Session_Name, endpoints}  

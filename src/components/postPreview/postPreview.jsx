@@ -5,12 +5,13 @@ import Swal from 'sweetalert2'
 import { getProfileAlldata } from '@/services/profileAlldata';
 import { StoreContext } from '@/store/StoreProvider';
 import { types } from '@/constants/Constants';
+import { getPostComments } from '@/services/primitives';
 
 const PostPreview = ({ message }) => {
     const router = useRouter();
     const {  perfilDispatch } = useContext(StoreContext)
    
-    const goProfile = async (userId) => {
+    const goProfile = async () => {
         try {
            
             let { basicUserData } = await getProfileAlldata(message.message.userId)
@@ -28,8 +29,12 @@ const PostPreview = ({ message }) => {
         }
     }
     const goComment = async () =>{
-         console.log(message)
+        let comments = await  getPostComments(message.message.id)
+        console.log(message)
+        console.log(comments)
     }
+   
+
 
     return (
 

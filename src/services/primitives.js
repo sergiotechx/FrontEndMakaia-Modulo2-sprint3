@@ -24,7 +24,7 @@ export const getUser = async (id) => {
         const tempUserData = await axios.get(complete_Url)
         let user = {}
 
-        if (Object.keys(tempUserData.data).length > 0 > 0) {
+        if (Object.keys(tempUserData.data).length > 0 ) {
             user = tempUserData.data
 
         }
@@ -32,5 +32,19 @@ export const getUser = async (id) => {
     }
     catch (error) {
         throw error 
+    }
+}
+export const getPostComments = async(postId)=>{
+    try{
+        let complete_Url = Data_URL + `comments?postId=${postId}`
+        const tempPostComments = await axios.get(complete_Url)
+        if(tempPostComments.data.lenght >0){
+           return tempPostComments.data
+        }
+        else{return []}
+         
+    }
+    catch(error){
+        throw error
     }
 }
