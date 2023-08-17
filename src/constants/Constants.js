@@ -12,5 +12,6 @@ export const types = {
     authLogin: 'auth - login',
     authLogout: 'auth - logout',
     perfilsetData: "set - data",
-    setComment : "set-comment",
+    setComent : "set-comment",
+    addComent : "add-comment",
 }

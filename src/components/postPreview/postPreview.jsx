@@ -38,8 +38,8 @@ const PostPreview = ({ message }) => {
             }
             let temData = { comments, post: post }
             console.log('la tempisa',temData)
-            comentDispatch({ type: types.setComment, payload: temData })
-            //router.push(`/detalle`)
+            comentDispatch({ type: types.setComent, payload: temData })
+            router.push(`/detalle`)
         }
         catch (error) {
             Swal.fire(
