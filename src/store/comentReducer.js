@@ -11,15 +11,15 @@ const initialComentStore = {
 
 
 const comentReducer = (state = initialComentStore, action) => {
-  
+
     switch (action.type) {
-       
+
         case types.setComent:
-            
+
             state = action.payload
             return state
-       
-            case types.addComent:
+
+        case types.addComent:
 
             return {
                 ...state,

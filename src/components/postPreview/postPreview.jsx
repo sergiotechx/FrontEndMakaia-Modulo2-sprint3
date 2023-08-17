@@ -37,7 +37,7 @@ const PostPreview = ({ message }) => {
                 image: message.message.image
             }
             let temData = { comments, post: post }
-            console.log('la tempisa',temData)
+            console.log("la data para enviar a comment inicial", temData)
             comentDispatch({ type: types.setComent, payload: temData })
             router.push(`/detalle`)
         }
