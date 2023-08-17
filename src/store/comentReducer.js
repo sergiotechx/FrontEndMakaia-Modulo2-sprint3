@@ -1,3 +1,5 @@
+import { types } from "@/constants/Constants";
+
 const initialComentStore = {
         comments: [],
             post: {
@@ -9,7 +11,7 @@ const initialComentStore = {
 
 
 const comentReducer = (state = initialComentStore, action) => {
-    console.log('por acá',action.type)
+   
     switch (action.type) {
         
         case types.setComent:
