@@ -13,8 +13,10 @@ const Page = () => {
     const {
         comentStore,
         comentDispatch,
+        authStore
     } = useContext(StoreContext);
-
+    console.log(comentStore)
+    console.log(authStore)
     // const router = useRouter();
     const [newComent, setNewComent] = useState("");
 
