@@ -1,14 +1,16 @@
 "use client";
+
+
+import React, { createContext, useReducer } from "react";
 import authReducer, { initialAuthStore } from "./AuthReducer";
 import userReducer, { initialUserStore } from "./PerfilReducer";
-import { createContext, useReducer } from "react";
 import comentReducer, { initialComentStore } from "./comentReducer";
 
 const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const [authStore, authDispatch] = useReducer(authReducer, initialAuthStore);
-  const [comentStore, comentDispath] = useReducer(comentReducer,initialComentStore);
+  const [comentStore, comentDispatch] = useReducer(comentReducer,initialComentStore);
   const [perfilStore, perfilDispatch] = useReducer(userReducer,initialUserStore);
   return (
     <StoreContext.Provider
@@ -16,7 +18,7 @@ const StoreProvider = ({ children }) => {
         {authStore,
         authDispatch,
         comentStore,
-        comentDispath,
+        comentDispatch,
         perfilStore,
         perfilDispatch}
       }
@@ -27,5 +29,4 @@ const StoreProvider = ({ children }) => {
 };
 
 export { StoreContext };
-
 export default StoreProvider;
