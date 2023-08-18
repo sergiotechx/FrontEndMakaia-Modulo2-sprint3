@@ -71,7 +71,6 @@ export const upDateProfile = async (id, user) => {
         "Content-Type": "application/json",
       },
     });
-    console.log(result3);
   } catch (error) {
     console.log(error);
   }

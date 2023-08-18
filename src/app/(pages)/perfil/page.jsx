@@ -24,8 +24,6 @@ const Page = () => {
   const handleOptions = () => {
     if (perfilStore.id == authStore.id) {
       setMenuOptions((prevMenuOptions) => !prevMenuOptions);
-      console.log("perfilStore ", perfilStore.id);
-      console.log("authStore", authStore.id);
     }
   };
 
