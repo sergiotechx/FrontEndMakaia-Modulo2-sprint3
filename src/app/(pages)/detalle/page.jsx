@@ -6,7 +6,7 @@ import { types } from "../../../constants/Constants";
 import { sendComent } from "@/services/comments";
 import './page.scss'
 const julian = require('julian');
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
 
@@ -17,7 +17,7 @@ const Page = () => {
     } = useContext(StoreContext);
     console.log(comentStore)
     console.log(authStore)
-    // const router = useRouter();
+    const router = useRouter();
     const [newComent, setNewComent] = useState("");
 
    
@@ -47,14 +47,14 @@ const Page = () => {
     };
 
     const handleClik = () => {
-        router.push(`/perfil`);
+        router.push(`/`);
     };
 
     return (
         <div className='card'>
             <div>
                 <figure className='imgP'>
-                    <img src="/images/jennie.jpg" alt="" />
+                    <img src={comentStore.post.image} alt="" />
                 </figure>
                 <figure className='back' onClick={handleClik}>
                     <img src="/images/back.svg" alt="back" />
@@ -71,13 +71,17 @@ const Page = () => {
                 </article>
                 <div className='comments'>
                     {comentStore.comments.map((coment) => (
+                        <div className="comentF">
+                        <img src={authStore.avatar} alt="" />
                         <span key={coment.id}>{coment.text}</span>
+                        </div>
                     ))}
+                    
                 </div>
             </div>
             <div className='newComent'>
-                <figure>
-                    <img src="/images/imgComent.svg" alt="img" />
+                <figure className="imgAvatar">
+                    <img src={authStore.avatar} alt="img" />
                 </figure>
                 <figcaption className='newComent__text'>
                     <input
