@@ -49,6 +49,7 @@ const Page = () => {
     const handleClik = () => {
         router.push(`/`);
     };
+    //
 
     return (
         <div className='card'>
