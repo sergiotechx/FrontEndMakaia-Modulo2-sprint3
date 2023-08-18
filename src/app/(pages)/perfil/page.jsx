@@ -6,9 +6,10 @@ import { Button } from "@mantine/core";
 import Swal from "sweetalert2";
 import { usePathname, useRouter } from "next/navigation";
 import { upDateProfile } from "@/services/primitives";
+import { types } from "@/constants/Constants";
 
 const Page = () => {
-  const { perfilStore, authStore } = useContext(StoreContext);
+  const { perfilStore, authStore,authDispatch } = useContext(StoreContext);
   const followersCount = perfilStore?.followers.length;
   const followingCount = perfilStore?.following.length;
   const fotos = perfilStore.posts[0].message.image;
@@ -51,6 +52,7 @@ const Page = () => {
       usuario.name = inputValue;
       const upDateP = await upDateProfile(perfilStore.id, usuario);
       setDisabeled((prevDisabeled) => !prevDisabeled);
+      authDispatch({ type: types.authLogin, payload: usuario })
       Swal.fire("Excelente!", "Perfil modificado con exito.", "success");
     }
   };

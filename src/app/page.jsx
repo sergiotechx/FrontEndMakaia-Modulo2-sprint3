@@ -58,7 +58,8 @@ export default function Page() {
 
   useEffect(() => {
     loadData()
-  }, [])
+    console.log('por acá de nuevo')
+  }, [authStore.name])
 
 
   const goProfile = async (userId) => {
