@@ -39,7 +39,8 @@ const PostPreview = ({ message }) => {
             let post = {
                 postId: message.message.id,
                 userId: message.message.userId,
-                image: message.message.image
+                image: message.message.image,
+                caption: message.message.caption
             }
             let temData = { comments, post: post }
             console.log("la data para enviar a comment inicial", temData)

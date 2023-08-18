@@ -5,7 +5,8 @@ const initialComentStore = {
     post: {
         postId: 0,
         userId: 0,
-        image: ""
+        image: "",
+        caption: ""
     }
 };
 

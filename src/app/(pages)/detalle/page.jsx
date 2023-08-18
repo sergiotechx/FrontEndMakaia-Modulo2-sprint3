@@ -66,9 +66,7 @@ const Page = () => {
             </div>
             <div className='content'>
                 <article className='descricción'>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet gravida tortor in habitant pellentesque a quisque. Nisl diam, amet eu est libero dignissim donec nec. Fames bibendum porta phasellus neque. Integer et lectus amet, vitae facilisis laoreet feugiat pellentesque accumsan. Turpis eget laoreet turpis urna tincidunt nisl, integer nisl. Id nec tortor vel, dui, lectus. Donec consequat dolor cursus sed pellentesque etiam ipsum, id quam. Tincidunt eu duis ullamcorper posuere augue. Arcu senectus elit, semper diam porta. Platea tempus augue ante pellentesque dictum sed vitae. Auctor dui ac bibendum lacus.
-                    </p>
+                    <p>{comentStore.post.caption}</p>
                 </article>
                 <div className='comments'>
                     {comentStore.comments.map((coment) => (
