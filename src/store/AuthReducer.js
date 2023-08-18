@@ -7,6 +7,7 @@ const initialAuthStore = {
     name: undefined,
     email: undefined,
     avatar: undefined,
+    poster:undefined,
     followers: [],
     following: [],
     posts: []

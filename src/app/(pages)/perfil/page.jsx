@@ -4,22 +4,29 @@ import "./page.scss";
 import { StoreContext } from "@/store/StoreProvider";
 import { Button } from "@mantine/core";
 import Swal from "sweetalert2";
+import { usePathname, useRouter } from "next/navigation";
+import { upDateProfile } from "@/services/primitives";
 
 const Page = () => {
-  const { perfilStore } = useContext(StoreContext);
+  const { perfilStore, authStore } = useContext(StoreContext);
   const followersCount = perfilStore?.followers.length;
   const followingCount = perfilStore?.following.length;
   const fotos = perfilStore.posts[0].message.image;
   const [menuOptions, setMenuOptions] = useState(false);
   const [disabeled, setDisabeled] = useState(true);
   const [inputValue, setInputValue] = useState(perfilStore.name);
+  const router = useRouter();
 
   const handleBack = () => {
-    console.log("Atras");
+    router.push("/");
   };
 
   const handleOptions = () => {
-    setMenuOptions((prevMenuOptions) => !prevMenuOptions);
+    if (perfilStore.id == authStore.id) {
+      setMenuOptions((prevMenuOptions) => !prevMenuOptions);
+      console.log("perfilStore ", perfilStore.id);
+      console.log("authStore", authStore.id);
+    }
   };
 
   const handleEdit = () => {
@@ -31,9 +38,8 @@ const Page = () => {
     setInputValue(event.target.value);
   };
 
-  const handleClickEdit = () => {
-    console.log("icon edit");
-    Swal.fire({
+  const handleClickEdit = async () => {
+    let respuesta = await Swal.fire({
       title: "Espera un momento!",
       text: "Estas seguro de modificar tu perfil?",
       icon: "warning",
@@ -41,13 +47,14 @@ const Page = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sí, modificar perfil!",
-    }).then((result) => {
-      console.log(inputValue);
-      if (result.isConfirmed) {
-        setDisabeled((prevDisabeled) => !prevDisabeled);
-        Swal.fire("Excelente!", "Perfil modificado con exito.", "success");
-      }
     });
+    if (respuesta.isConfirmed) {
+      let usuario = authStore;
+      usuario.name = inputValue;
+      const upDateP = await upDateProfile(perfilStore.id, usuario);
+      setDisabeled((prevDisabeled) => !prevDisabeled);
+      Swal.fire("Excelente!", "Perfil modificado con exito.", "success");
+    }
   };
 
   return (

@@ -1,7 +1,12 @@
 'use client'
-import React, { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import React, { useContext, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import './footer.scss'
+import { StoreContext } from '@/store/StoreProvider'
+import { getProfileAlldata } from '@/services/profileAlldata'
+import { types } from '@/constants/Constants'
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Loader } from '@mantine/core';
 
 
 const Footer = () => {
@@ -17,12 +22,37 @@ const Footer = () => {
 
     const [ovalPosition, setOvalPosition] = useState('1px');
     const currentPath = usePathname()
+    const router = useRouter();
+    const { authStore, perfilDispatch } = useContext(StoreContext);
+    const [opened, { open, close }] = useDisclosure(false);
 
+    const goTo = async (index) => {
+        switch (index) {
+            case 0:
+                router.push('/')
+                break
+            case 4:
+                open()
+                let { basicUserData } = await getProfileAlldata(authStore.id)
+                if (Object.keys(basicUserData).length > 0) {
+                    perfilDispatch({ type: types.perfilsetData, payload: basicUserData })
+                    router.push(`/perfil`)
+                }
+                close()
+                break
+        }
+    }
     return (
         <div className="footer">
+            <Modal size={100} opened={opened} onClose={close} centered title="Cargando" withCloseButton={false}>
+                
+                    <center> <Loader color="pink" size="md" variant="bars" /></center>
+               
+            </Modal>
             {currentPath != '/login' ?
                 (
                     <ul className='ul'>
+
                         <span className='oval' style={{ transform: `translateX(${ovalPosition})` }}>
                             <span className='cornerL'>
                                 <span className='cornerL__re'>
@@ -39,7 +69,7 @@ const Footer = () => {
                         {
                             Menus.map((menu, i) => (
                                 <li key={i} className='li'>
-                                    <a onClick={() => { setActive(i); setOvalPosition(menu.dis); }}>
+                                    <a onClick={() => { setActive(i); setOvalPosition(menu.dis); goTo(i) }}>
                                         <span className={`icon ${i === active && 'active'}`}>
                                             <ion-icon name={menu.icon}></ion-icon>
                                         </span>

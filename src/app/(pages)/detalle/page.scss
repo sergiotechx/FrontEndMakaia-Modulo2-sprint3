@@ -3,9 +3,16 @@
      flex-direction: column;
      
 }
+.imgP{
+    width: 390px;
+    height: 563px;
+}
 .imgP img{
     position: relative;
     border-radius: 20px;
+    width: 428px;
+    height: 563px;
+    
 }
 
 .back img{
@@ -42,8 +49,20 @@
     }
 }
 .comments{
+    display: flex;
+
+    flex-direction: column;
+    .comentF{
+        display: flex;
+        align-items: center;
+    }
+    img{
+        margin-top: 25px;
+        height: 25px;
+        margin-left: 15px;
+    }
     span{
-        border-top: 1px solid black;
+    border-top: 1px solid black;
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -66,7 +85,7 @@
     padding-top: 15px;
     gap: 8px;
     & img{
-        padding-left: 16px;
+        padding-left: 0px;
     }
     &__text{
         display: flex;
@@ -84,5 +103,10 @@
         border: none;
         }
         
+    }
+    .imgAvatar img{
+        height: 35px;
+        border-radius: 20px;
+        margin-left: 20px;
     }
 }
