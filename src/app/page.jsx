@@ -6,7 +6,8 @@ import useSessionStorage from '@/hooks/useSessionStorage'
 import { Session_Name, types } from '@/constants/Constants'
 import { getHomeInitialData } from '@/services/homeInitialData'
 import { Carousel } from '@mantine/carousel';
-import { Avatar, Menu, Loader } from '@mantine/core';
+import { Avatar, Menu, Loader, Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import PostPreview from '@/components/postPreview/postPreview'
 import Swal from 'sweetalert2'
 import { getProfileAlldata } from '@/services/profileAlldata'
@@ -22,6 +23,7 @@ export default function Page() {
   const { getSessionStorage, deleteInfoSessionStorage } = useSessionStorage()
   const [followingUsers, setFollowingUsers] = useState([])
   const [posts, setPosts] = useState([])
+  const [opened, { open, close }] = useDisclosure(false);
 
   const loadData = async () => {
 
@@ -61,13 +63,16 @@ export default function Page() {
 
   const goProfile = async (userId) => {
     try {
+      open()
       let { basicUserData } = await getProfileAlldata(userId)
       if (Object.keys(basicUserData).length > 0) {
         perfilDispatch({ type: types.perfilsetData, payload: basicUserData })
+        close()
         router.push(`/perfil`)
       }
     }
     catch (error) {
+      close()
       Swal.fire(
         'error!',
         error.message,
@@ -78,6 +83,9 @@ export default function Page() {
 
   return (
     <div className='Home_Container'>
+      <Modal size={100} opened={opened} onClose={close} centered title="Cargando" withCloseButton={false}>
+        <center> <Loader color="pink" size="md" variant="bars" /></center>
+      </Modal>
       <div className='Home_Header'>
         <div className='Home_Header_group1'>
           <figure>
