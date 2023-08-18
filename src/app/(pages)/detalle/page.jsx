@@ -69,9 +69,9 @@ const Page = () => {
                     <p>{comentStore.post.caption}</p>
                 </article>
                 <div className='comments'>
-                    {comentStore.comments.map((coment) => (
-                        <div className="comentF">
-                        <img src={authStore.avatar} alt="" />
+                    {comentStore.comments.map((coment,index) => (
+                        <div className="comentF" key ={index}>
+                        <img key ={index} src={authStore.avatar} alt="" />
                         <span key={coment.id}>{coment.text}</span>
                         </div>
                     ))}
