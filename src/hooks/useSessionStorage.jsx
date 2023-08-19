@@ -1,20 +1,20 @@
 
 import { useState } from "react";
+import { Session_Name } from '@/constants/Constants';
 
 const useSessionStorage = () => {
 
   const [_sessionStorage, setDataStorage] = useState({})
-  
+
   const getSessionStorage = (key) => {
-    
+
     let temp = sessionStorage.getItem(key) ? JSON.parse(sessionStorage.getItem(key)) : {};
     setDataStorage(temp);
     return temp;
-   }
+  }
 
 
-  const  saveInfoSessionStorage =  (key, data)=>  {
-    console.log("saveInfoSessionStorage")
+  const saveInfoSessionStorage = (key, data) => {
     sessionStorage.setItem(key, JSON.stringify(data));
     setDataStorage(data);
   };
@@ -24,7 +24,7 @@ const useSessionStorage = () => {
     setDataStorage({});
   };
 
-  return ({ _sessionStorage, getSessionStorage,saveInfoSessionStorage, deleteInfoSessionStorage });
+  return ({ _sessionStorage, getSessionStorage, saveInfoSessionStorage, deleteInfoSessionStorage });
 
 };
 
