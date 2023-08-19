@@ -1,10 +1,9 @@
-
 import './layout.scss'
 import Footer from '../components/footer/Footer';
 import { Balsamiq_Sans } from 'next/font/google'
 import StoreProvider from './../store/StoreProvider';
 import AuthValidation from '@/components/AuthValidation/AuthValidation';
-
+import Script from 'next/script'
 
 
 const balsamiq_Sans = Balsamiq_Sans({
@@ -30,8 +29,10 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </StoreProvider>
-        
+        <Script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"/>
+        <Script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" />
+
       </body>
-    </html> 
+    </html>
   )
 }
