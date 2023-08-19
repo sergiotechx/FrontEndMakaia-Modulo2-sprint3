@@ -12,7 +12,9 @@ const Page = () => {
   const { perfilStore, authStore,authDispatch } = useContext(StoreContext);
   const followersCount = perfilStore?.followers.length;
   const followingCount = perfilStore?.following.length;
-  const fotos = perfilStore.posts[0].message.image;
+   
+  const fotos = perfilStore?.posts[0]?.message.image;
+  
   const [menuOptions, setMenuOptions] = useState(false);
   const [disabeled, setDisabeled] = useState(true);
   const [inputValue, setInputValue] = useState(perfilStore.name);
@@ -134,4 +136,4 @@ const Page = () => {
 };
 
 export default Page;
-// merge
+
