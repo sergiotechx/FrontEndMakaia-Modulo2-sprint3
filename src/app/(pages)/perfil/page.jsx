@@ -6,7 +6,8 @@ import { Button } from "@mantine/core";
 import Swal from "sweetalert2";
 import { usePathname, useRouter } from "next/navigation";
 import { upDateProfile } from "@/services/primitives";
-import { types } from "@/constants/Constants";
+import { Session_Name, types } from "@/constants/Constants";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 const Page = () => {
   const { perfilStore, authStore,authDispatch } = useContext(StoreContext);
@@ -19,6 +20,7 @@ const Page = () => {
   const [disabeled, setDisabeled] = useState(true);
   const [inputValue, setInputValue] = useState(perfilStore.name);
   const router = useRouter();
+  const { saveInfoSessionStorage } = useSessionStorage()
 
   const handleBack = () => {
     router.push("/");
@@ -54,6 +56,7 @@ const Page = () => {
       usuario.name = inputValue;
       const upDateP = await upDateProfile(perfilStore.id, usuario);
       setDisabeled((prevDisabeled) => !prevDisabeled);
+      saveInfoSessionStorage(Session_Name, usuario)
       authDispatch({ type: types.authLogin, payload: usuario })
       Swal.fire("Excelente!", "Perfil modificado con exito.", "success");
     }

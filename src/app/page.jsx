@@ -26,13 +26,15 @@ export default function Page() {
   const [opened, { open, close }] = useDisclosure(false);
 
   const loadData = async () => {
-
-    let temp = getSessionStorage(Session_Name)
-
+     console.log("por acá tio!")
+     let temp = getSessionStorage(Session_Name)
+  
     if (Object.keys(temp).length > 0) {
       let { messages, followingUsers } = await getHomeInitialData(temp)
       setPosts(messages)
+      console.log('la mensajisa',messages)
       setFollowingUsers(followingUsers)
+      
     }
   }
   const doCloseSession = async () => {
@@ -58,7 +60,7 @@ export default function Page() {
 
   useEffect(() => {
     loadData()
-    console.log('por acá de nuevo')
+   
   }, [])
 
 
