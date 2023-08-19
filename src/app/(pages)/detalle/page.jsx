@@ -1,38 +1,36 @@
 'use client'
-
+import './page.scss'
 import React, { useContext, useState } from "react";
 import { StoreContext } from "@/store/StoreProvider";
 import { types } from "../../../constants/Constants";
 import { sendComent } from "@/services/comments";
-import './page.scss'
-const julian = require('julian');
 import { useRouter } from "next/navigation";
-
+const julian = require('julian');
 const Page = () => {
+
 
     const {
         comentStore,
         comentDispatch,
         authStore
     } = useContext(StoreContext);
-    console.log(comentStore)
-    console.log(authStore)
+
     const router = useRouter();
     const [newComent, setNewComent] = useState("");
 
-   
-    
+
+
 
     const handleComentSubmit = async () => {
         const now = new Date();
         if (newComent.trim() !== "") {
-            await sendComent(comentStore.post.postId,    authStore.id, newComent);
-            console.log(newComent); 
+            await sendComent(comentStore.post.postId, authStore.id, newComent);
+            console.log(newComent);
             console.log(comentStore);
             const newComentObject = {
                 id: comentStore.comments.length + 1,
-                postId: comentStore.post.postId, 
-                userId: authStore.id, 
+                postId: comentStore.post.postId,
+                userId: authStore.id,
                 text: newComent,
                 timestamp: Number(julian(now)),
             };
@@ -70,12 +68,12 @@ const Page = () => {
                 </article>
                 <div className='comments'>
                     {comentStore.comments.map((coment,index) => (
-                        <div className="comentF" key ={index}>
-                        <img key ={index} src={authStore.avatar} alt="" />
-                        <span key={coment.id}>{coment.text}</span>
+                        <div className="comentF" key={index}>
+                            <img src={authStore.avatar} alt="" />
+                            <span >{coment.text}</span>
                         </div>
                     ))}
-                    
+
                 </div>
             </div>
             <div className='newComent'>

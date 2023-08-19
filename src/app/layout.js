@@ -1,3 +1,4 @@
+'use client'
 import './layout.scss'
 import Footer from '../components/footer/Footer';
 import { Balsamiq_Sans } from 'next/font/google'
