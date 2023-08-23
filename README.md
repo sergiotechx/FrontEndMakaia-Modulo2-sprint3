@@ -55,7 +55,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - Se habilitará el campo de `edición del nombre` y aparecerá un botón para enviar los cambios realizados en el perfil como se muestra acontinucación.
 
-![](https://raw.githubusercontent.com/sergiotechx/FrontEndMakaia-Modulo2-sprint3/main/findyReadmi/findy_captur_perfil.PNG)
+![](https://raw.githubusercontent.com/sergiotechx/FrontEndMakaia-Modulo2-sprint3/main/findyReadmi/findy_edit_name.PNG)
 
 - Para ver un post o realizar algún comentario se da click en la foto del usuario en la página de inicio.
 
