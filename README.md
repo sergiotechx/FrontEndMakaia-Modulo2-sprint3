@@ -38,6 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Red Social Findy 📲
 
 - Aplicación web para dispositivos con pantalla de `428px` por `926px` .
+- Link de despliegue en Vercel `https://front-end-makaia-modulo2-sprint3-seven.vercel.app/login`.
+- Origen de la data: `https://frontendmakaia-modulo2-sprint3-jsonserver.onrender.com/`
 - Para ingresar a la aplicación es necesario contar con un usuario y contraseña validos.
 
 `usuario: 1@correo.com`
